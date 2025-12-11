@@ -1,0 +1,91 @@
+[
+  {
+    "id": "fic-001",
+    "title": "The Midnight Library",
+    "author": "Matt Haig",
+    "category": "Fiction",
+    "price": 24.99,
+    "originalPrice": 29.99,
+    "rating": 4.5,
+    "reviews": 1234,
+    "image": "/api/book-cover/fic-001",
+    "description": "A dazzling novel about all the choices that go into a life well lived.",
+    "isbn": "978-0525559474",
+    "pages": 304,
+    "publisher": "Viking",
+    "publishDate": "2020-09-29",
+    "inStock": true,
+    "featured": true,
+    "language": "English",
+    "format": [
+      "Audiobook",
+      "Paperback",
+      "Hardcover",
+      "Kindle"
+    ],
+    "dimensions": {
+      "length": 7.7,
+      "width": 6.5,
+      "height": 1.1,
+      "unit": "inches"
+    },
+    "weight": "1.5 pounds",
+    "edition": "Reprint Edition",
+    "awards": [
+      "Goodreads Choice Award Nominee for Fiction (2020)"
+    ],
+    "genres": [
+      "Fantasy",
+      "Science Fiction",
+      "Contemporary"
+    ],
+    "ageRange": "Adult",
+    "publicationCountry": "United States",
+    "audioLength": "11 hours and 31 minutes",
+    "narrator": "Jane Smith"
+  },
+  {
+    "id": "fic-002",
+    "title": "Where the Crawdads Sing",
+    "author": "Delia Owens",
+    "category": "Fiction",
+    "price": 22.99,
+    "originalPrice": 27.99,
+    "rating": 4.7,
+    "reviews": 2341,
+    "image": "/api/book-cover/fic-002",
+    "description": "A murder mystery and coming-of-age story set in the marshes of North Carolina.",
+    "isbn": "978-0735219090",
+    "pages": 384,
+    "publisher": "Putnam",
+    "publishDate": "2018-08-14",
+    "inStock": true,
+    "featured": true,
+    "language": "English",
+    "format": [
+      "Audiobook",
+      "Hardcover"
+    ],
+    "dimensions": {
+      "length": 9,
+      "width": 6.1,
+      "height": 1.1,
+      "unit": "inches"
+    },
+    "weight": "1.0 pounds",
+    "edition": "Reprint Edition",
+    "awards": [
+      "Goodreads Choice Award for Fiction (2018)",
+      "Southern Book Prize (2019)"
+    ],
+    "genres": [
+      "Mystery",
+      "Romance",
+      "Historical Fiction"
+    ],
+    "ageRange": "Adult",
+    "publicationCountry": "United States",
+    "audioLength": "5 hours and 34 minutes",
+    "narrator": "John Doe"
+  }
+]
