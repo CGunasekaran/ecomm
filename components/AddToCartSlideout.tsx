@@ -27,29 +27,39 @@ export default function AddToCartSlideout({
 }: AddToCartSlideoutProps) {
   useEffect(() => {
     if (isOpen) {
+      // Prevent body scrolling when slideout is open
+      document.body.style.overflow = "hidden";
+
       // Auto close after 5 seconds
       const timer = setTimeout(() => {
         onClose();
       }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen, onClose]);
 
-  if (!book) return null;
+      return () => {
+        document.body.style.overflow = "unset";
+        clearTimeout(timer);
+      };
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen, onClose, book, format, quantity]);
+
+  // Don't render anything if there's no book
+  if (!book) {
+    return null;
+  }
 
   return (
-    <>
+    <div className={`${isOpen ? "block" : "hidden"}`}>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0"
-        }`}
+        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] transition-opacity duration-300"
         onClick={onClose}
       />
 
       {/* Slideout Panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-md bg-card border-l border-border shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full max-w-md bg-card border-l border-border shadow-xl z-[9999] transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -156,6 +166,6 @@ export default function AddToCartSlideout({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

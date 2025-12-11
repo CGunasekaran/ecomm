@@ -32,6 +32,7 @@ export default function BookDetailsPage() {
   );
   const [showSlideout, setShowSlideout] = useState(false);
   const [showSharePopover, setShowSharePopover] = useState(false);
+  const [slideoutKey, setSlideoutKey] = useState(0); // Force re-render of slideout
   const shareButtonRef = useRef<HTMLButtonElement>(null);
 
   // Find the book
@@ -80,9 +81,13 @@ export default function BookDetailsPage() {
   };
 
   const handleAddToCart = () => {
+    // Add items to cart
     for (let i = 0; i < quantity; i++) {
       addToCart(book, selectedFormat);
     }
+
+    // Force a re-render and show the slideout
+    setSlideoutKey((prev) => prev + 1);
     setShowSlideout(true);
   };
 
@@ -386,6 +391,7 @@ export default function BookDetailsPage() {
 
       {/* Add to Cart Slideout */}
       <AddToCartSlideout
+        key={slideoutKey}
         isOpen={showSlideout}
         onClose={() => setShowSlideout(false)}
         book={book}
