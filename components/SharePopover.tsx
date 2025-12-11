@@ -139,7 +139,7 @@ export default function SharePopover({
   return (
     <div
       ref={popoverRef}
-      className={`absolute z-50 w-64 bg-card border border-border rounded-lg shadow-xl transition-all duration-200 ${
+      className={`absolute z-50 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl backdrop-blur-sm transition-all duration-200 ${
         isOpen
           ? "opacity-100 scale-100"
           : "opacity-0 scale-95 pointer-events-none"
@@ -147,27 +147,57 @@ export default function SharePopover({
       style={{
         top: "calc(100% + 8px)",
         right: "0",
+        backgroundColor: "var(--card)",
+        borderColor: "var(--border)",
       }}
     >
       {/* Arrow */}
-      <div className="absolute -top-2 right-4 w-4 h-4 bg-card border-l border-t border-border rotate-45 transform"></div>
+      <div
+        className="absolute -top-2 right-4 w-4 h-4 border-l border-t rotate-45 transform"
+        style={{
+          backgroundColor: "var(--card)",
+          borderColor: "var(--border)",
+        }}
+      ></div>
 
       {/* Content */}
-      <div className="relative bg-card rounded-lg overflow-hidden">
+      <div
+        className="relative rounded-lg overflow-hidden"
+        style={{ backgroundColor: "var(--card)" }}
+      >
         {/* Header */}
-        <div className="px-4 py-3 border-b border-border">
-          <h3 className="text-sm font-semibold text-foreground">
+        <div
+          className="px-4 py-3 border-b"
+          style={{
+            borderColor: "var(--border)",
+            backgroundColor: "var(--card)",
+          }}
+        >
+          <h3
+            className="text-sm font-semibold"
+            style={{ color: "var(--foreground)" }}
+          >
             Share &ldquo;{book.title}&rdquo;
           </h3>
         </div>
 
         {/* Share Options */}
-        <div className="p-2">
+        <div className="p-2" style={{ backgroundColor: "var(--card)" }}>
           {shareOptions.map((option) => (
             <button
               key={option.name}
               onClick={option.action}
-              className={`w-full flex items-center gap-3 px-3 py-2 text-sm text-foreground rounded-md transition-colors ${option.color}`}
+              className={`w-full flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors hover:bg-opacity-80 ${option.color}`}
+              style={{
+                color: "var(--foreground)",
+                backgroundColor: "transparent",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--muted)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
             >
               <span className="text-lg">{option.icon}</span>
               <span className="font-medium">{option.name}</span>
@@ -175,14 +205,27 @@ export default function SharePopover({
           ))}
 
           {/* Copy Link */}
-          <div className="border-t border-border mt-2 pt-2">
+          <div
+            className="border-t mt-2 pt-2"
+            style={{ borderColor: "var(--border)" }}
+          >
             <button
               onClick={copyToClipboard}
-              className={`w-full flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors ${
-                copied
-                  ? "bg-green-50 text-green-700"
-                  : "text-foreground hover:bg-muted"
-              }`}
+              className="w-full flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors"
+              style={{
+                backgroundColor: copied ? "#dcfce7" : "transparent",
+                color: copied ? "#15803d" : "var(--foreground)",
+              }}
+              onMouseEnter={(e) => {
+                if (!copied) {
+                  e.currentTarget.style.backgroundColor = "var(--muted)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!copied) {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }
+              }}
             >
               <span className="text-lg">
                 {copied ? <CheckIcon className="h-5 w-5" /> : "📋"}
