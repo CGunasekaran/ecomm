@@ -1,0 +1,30 @@
+# This file defines code owners for the ecommerce book store repository
+# Code owners are automatically requested for review when someone opens a pull request that modifies code that they own
+# Only the code owner(s) can approve changes to their owned code
+
+# Global code owner - all files and directories
+* @CGunasekaran
+
+# Package management and configuration files
+package.json @CGunasekaran
+tsconfig.json @CGunasekaran
+next.config.ts @CGunasekaran
+tailwind.config.ts @CGunasekaran
+postcss.config.mjs @CGunasekaran
+eslint.config.mjs @CGunasekaran
+.gitignore @CGunasekaran
+
+# Application source code
+/app/ @CGunasekaran
+/components/ @CGunasekaran
+/context/ @CGunasekaran
+/data/ @CGunasekaran
+/lib/ @CGunasekaran
+/types/ @CGunasekaran
+/scripts/ @CGunasekaran
+
+# Public assets
+/public/ @CGunasekaran
+
+# Documentation
+README.md @CGunasekaran
